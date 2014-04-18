@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+
+<ToolBar fx:controller="com.suissoft.wallaby.application.ToolBarController" xmlns:fx="http://javafx.com/fxml" xmlns="http://javafx.com/javafx/8">
+	<items>
+		<Button fx:id="saveAs" mnemonicParsing="false" text="">
+			<graphic>
+				<ImageView fitHeight="0.0" fitWidth="0.0"
+					mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+					<image>
+						<Image url="/image/save_as.png" />
+					</image>
+				</ImageView>
+			</graphic>
+		</Button>
+		<Button fx:id="profile" mnemonicParsing="false" text="">
+			<graphic>
+				<ImageView fitHeight="0.0" fitWidth="0.0"
+					mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+					<image>
+						<Image url="/image/bar.png" />
+					</image>
+				</ImageView>
+			</graphic>
+		</Button>
+		<Button fx:id="print" mnemonicParsing="false" onAction="#onPrint"
+			text="">
+			<graphic>
+				<ImageView fitHeight="26.0" fitWidth="26.0"
+					mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+					<image>
+						<Image url="/image/printer-32.png" backgroundLoading="true" />
+					</image>
+				</ImageView>
+			</graphic>
+		</Button>
+	</items>
+</ToolBar>
