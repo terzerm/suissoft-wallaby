@@ -1,11 +1,11 @@
-package com.suissoft.wallaby.application;
+package com.suissoft.wallaby.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.print.PrinterJob;
 import javafx.scene.Node;
 
-public class MenuBarController {
+public class MenuBarController extends ChildController {
 	@FXML
 	public void onPrint(ActionEvent evt) {
 		final Node node = (Node)evt.getSource();

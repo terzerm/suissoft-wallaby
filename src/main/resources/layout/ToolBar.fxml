@@ -7,7 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 
-<ToolBar fx:controller="com.suissoft.wallaby.application.ToolBarController" xmlns:fx="http://javafx.com/fxml" xmlns="http://javafx.com/javafx/8">
+<ToolBar fx:controller="com.suissoft.wallaby.controller.ToolBarController" xmlns:fx="http://javafx.com/fxml" xmlns="http://javafx.com/javafx/8">
 	<items>
 		<Button fx:id="saveAs" mnemonicParsing="false" text="">
 			<graphic>
