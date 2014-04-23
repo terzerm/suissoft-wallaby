@@ -1,13 +1,9 @@
 package com.suissoft.wallaby.controller;
 
-import javax.inject.Inject;
-import javax.inject.Named;
-
-import com.suissoft.wallaby.inject.guice.ChildControllerInjector;
 
 abstract public class ChildController implements Controller {
-	@Inject
-	@Named(ChildControllerInjector.PARENT_CONTROLLER_NAME)
+	
+	@Parent
 	private Controller parentController;
 
 	protected Controller getParentController() {

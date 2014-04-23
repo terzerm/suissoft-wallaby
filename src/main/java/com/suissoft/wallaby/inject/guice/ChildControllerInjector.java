@@ -4,42 +4,41 @@ import java.lang.reflect.Field;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import com.google.inject.Binder;
 import com.google.inject.Injector;
-import com.google.inject.Module;
-import com.google.inject.name.Names;
 import com.suissoft.wallaby.controller.Controller;
+import com.suissoft.wallaby.controller.Parent;
 
 public class ChildControllerInjector {
 
-	public static final String PARENT_CONTROLLER_NAME = "parentController";
-
 	public static void injectChildControllers(Injector injector, Controller controller) {
-		final Module module = new Module() {
-			public void configure(Binder binder) {
-				binder.bind(Controller.class).annotatedWith(Names.named(PARENT_CONTROLLER_NAME)).toInstance(controller);
-			}
-		};
-		injectChildControllers(controller, injector.createChildInjector(module), new LinkedHashSet<>());
+		injectChildControllers(injector, null, controller, new LinkedHashSet<>());
 	}
 
-	private static void injectChildControllers(Controller controller, Injector injector, Set<Controller> visited) {
+	private static void injectChildControllers(Injector injector, Controller parent, Controller controller, Set<Controller> visited) {
+		if (visited.contains(controller)) {
+			return;
+		}
 		visited.add(controller);
+		injector.injectMembers(controller);
 		Class<?> clazz = controller.getClass();
 		do {
 			for (final Field field : clazz.getDeclaredFields()) {
 				if (Controller.class.isAssignableFrom(field.getType())) {
-					field.setAccessible(true);
-					final Controller childController;
 					try {
-						childController = (Controller) field.get(controller);
+						field.setAccessible(true);
+						if (field.getAnnotation(Parent.class) != null) {
+							//parent controller
+							field.set(controller, parent);
+						} else {
+							//child controller
+							final Controller childController = (Controller) field.get(controller);
+							if (childController != null) {
+								//recurse children of child
+								injectChildControllers(injector, controller, childController, visited);
+							}
+						}
 					} catch (IllegalArgumentException | IllegalAccessException e) {
 						throw new RuntimeException("could not access child controller field " + controller.getClass().getName() + "#" + field.getName() + ", e=" + e, e);
-					}
-					if (!visited.contains(childController)) {
-						injector.injectMembers(childController);
-						//recurse children of child
-						injectChildControllers(injector.getParent(), childController);
 					}
 				}
 			}
@@ -47,7 +46,7 @@ public class ChildControllerInjector {
 			clazz = clazz.getSuperclass();
 		} while (clazz != null);
 	}
-	
+
 	//no instances
 	private ChildControllerInjector() {
 		super();
