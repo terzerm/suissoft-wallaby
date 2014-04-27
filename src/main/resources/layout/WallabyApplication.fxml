@@ -7,10 +7,10 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 
-<VBox id="application" fx:controller="com.suissoft.wallaby.controller.ApplicationController" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml" xmlns="http://javafx.com/javafx/8">
+<VBox fx:id="applicationPane" fx:controller="com.suissoft.wallaby.controller.ApplicationController" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml" xmlns="http://javafx.com/javafx/8">
   <children>
     <fx:include fx:id="menuBar" source="MenuBar.fxml"/>
     <fx:include fx:id="toolBar" source="ToolBar.fxml"/>
-    <fx:include fx:id="mainFrame" source="MainFrame.fxml"/>
+    <fx:include fx:id="view" source="MainFrame.fxml"/>
   </children>
 </VBox>

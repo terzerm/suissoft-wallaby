@@ -2,20 +2,27 @@ package com.suissoft.wallaby.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.print.PrinterJob;
-import javafx.scene.Node;
 
-public class ToolBarController extends ChildController {
+import javax.inject.Inject;
+
+import com.suissoft.wallaby.controller.action.PrintAction;
+import com.suissoft.wallaby.controller.action.QuitAction;
+
+public class ToolBarController extends AbstractActionController {
+	
+	@Inject
+	private QuitAction quitAction;
+	@Inject
+	private PrintAction printAction;
 	
 	@FXML
-	public void onPrint(ActionEvent evt) {
-		final Node node = (Node)evt.getSource();
-		final PrinterJob printerJob = PrinterJob.createPrinterJob();
-		if (printerJob.showPrintDialog(null)) {
-			if (printerJob.printPage(node.getScene().getRoot())) {
-				printerJob.endJob();
-			}
-		}
+	public void onQuit(ActionEvent event) {
+		onAction(quitAction, event);
+	};
+	
+	@FXML
+	public void onPrint(ActionEvent event) {
+		onAction(printAction, event);
 	};
 	
 }

@@ -6,12 +6,27 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.control.SeparatorMenuItem?>
 
-<MenuBar fx:controller="com.suissoft.wallaby.controller.MenuBarController" xmlns:fx="http://javafx.com/fxml" xmlns="http://javafx.com/javafx/8">
+<MenuBar fx:id="menuBar" fx:controller="com.suissoft.wallaby.controller.MenuBarController" xmlns:fx="http://javafx.com/fxml" xmlns="http://javafx.com/javafx/8">
 	<menus>
-		<Menu mnemonicParsing="false" text="File">
+		<Menu mnemonicParsing="true" text="Wallaby">
 			<items>
-				<MenuItem mnemonicParsing="false" text="Close" />
+				<MenuItem mnemonicParsing="false" text="About Wallabby" onAction="#onAbout" />
+			</items>
+			<items>
+				<SeparatorMenuItem />
+			</items>
+			<items>
+				<MenuItem mnemonicParsing="false" text="Quit Wallaby" onAction="#onQuit" />
+			</items>
+		</Menu>
+		<Menu mnemonicParsing="true" text="File">
+			<items>
+				<MenuItem mnemonicParsing="false" text="Quit Wallaby" onAction="#onQuit" />
+			</items>
+			<items>
+				<MenuItem mnemonicParsing="false" text="Quit Wallaby" onAction="#onQuit" />
 			</items>
 		</Menu>
 		<Menu mnemonicParsing="false" text="Edit">
