@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import com.suissoft.wallaby.model.ViewSpec?>
+
+<TreeView fx:id="treeView" showRoot="false" fx:controller="com.suissoft.wallaby.controller.TreeViewController"
+	SplitPane.resizableWithParent="false" xmlns:fx="http://javafx.com/fxml"
+	xmlns="http://javafx.com/javafx/8">
+	<fx:define>
+		<ViewSpec fx:id="NaturalPerson" text="Persons" entityClassName="com.suissoft.model.entity.partner.NaturalPerson" listView="/layout/view/NaturalPersonList.fxml" detailView="/layout/view/NaturalPersonDetail.fxml"/>
+		<ViewSpec fx:id="JuristicPerson" text="Companies" entityClassName="com.suissoft.model.entity.partner.JuristicPerson" listView="/layout/view/JuristicPersonList.fxml" detailView="/layout/view/JuristicPersonDetail.fxml"/>
+		<ViewSpec fx:id="OwnEmployee" text="Employees" entityClassName="com.suissoft.model.entity.partner.NaturalPerson" listView="/layout/view/NaturalPersonList.fxml" detailView="/layout/view/NaturalPersonDetail.fxml"/>
+		<ViewSpec fx:id="Workflows" text="Workflows" entityClassName="com.suissoft.model.entity.workflow.Workflow" listView="/layout/view/WorkflowList.fxml" detailView="/layout/view/WorkflowDetail.fxml"/>
+		<ViewSpec fx:id="OwnCompany" text="Branches/Stores" entityClassName="com.suissoft.model.entity.partner.JuristicPerson" listView="/layout/view/JuristicPersonList.fxml" detailView="/layout/view/JuristicPersonDetail.fxml"/>
+	</fx:define>
+	<TreeItem value="Root">
+		<children>
+			<TreeItem value="Contacts">
+				<children>
+					<TreeItem>
+						<value>
+							<fx:reference source="NaturalPerson"/>
+						</value>
+					</TreeItem>
+					<TreeItem>
+						<value>
+							<fx:reference source="JuristicPerson"/>
+						</value>
+					</TreeItem>
+					<TreeItem>
+						<value>
+							<fx:reference source="OwnEmployee"/>
+						</value>
+					</TreeItem>
+				</children>
+			</TreeItem>
+			<TreeItem value="Workflows">
+				<children>
+					<TreeItem>
+						<value>
+							<fx:reference source="Workflows"/>
+						</value>
+					</TreeItem>
+				</children>
+			</TreeItem>
+			<TreeItem value="Own Company">
+				<children>
+					<TreeItem>
+						<value>
+							<fx:reference source="OwnEmployee"/>
+						</value>
+					</TreeItem>
+					<TreeItem>
+						<value>
+							<fx:reference source="OwnCompany"/>
+						</value>
+					</TreeItem>
+				</children>
+			</TreeItem>
+		</children>
+	</TreeItem>
+</TreeView>

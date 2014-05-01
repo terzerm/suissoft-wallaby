@@ -15,7 +15,7 @@ import com.google.inject.Injector;
 import com.suissoft.model.inject.guice.EntityManagerModule;
 import com.suissoft.model.util.PersistenceUnit;
 import com.suissoft.wallaby.controller.action.QuitAction;
-import com.suissoft.wallaby.controller.action.ViewAction;
+import com.suissoft.wallaby.controller.action.SelectViewAction;
 import com.suissoft.wallaby.inject.guice.FxmlModule;
 
 public class WallabyApplication extends Application {
@@ -29,12 +29,12 @@ public class WallabyApplication extends Application {
 	@Inject
 	private QuitAction quitAction;
 	@Inject
-	private ViewAction viewAction;
+	private SelectViewAction.NaturalPersonView viewAction;
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		this.stage = primaryStage;
-		final FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/layout/WallabyApplication.fxml"));
+		final FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/layout/Application.fxml"));
 		rootNode = fxmlLoader.load();
 		scene = new Scene(rootNode);
 		stage.setTitle("Suissoft Wallaby");

@@ -11,6 +11,6 @@
   <children>
     <fx:include fx:id="menuBar" source="MenuBar.fxml"/>
     <fx:include fx:id="toolBar" source="ToolBar.fxml"/>
-    <fx:include fx:id="view" source="MainFrame.fxml"/>
+    <fx:include fx:id="view" source="View.fxml"/>
   </children>
 </VBox>

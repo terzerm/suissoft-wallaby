@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import com.suissoft.wallaby.controller.action.AboutAction;
 import com.suissoft.wallaby.controller.action.PrintAction;
 import com.suissoft.wallaby.controller.action.QuitAction;
+import com.suissoft.wallaby.controller.action.SelectViewAction;
 
 
 public class MenuBarController extends AbstractActionController {
@@ -18,6 +19,10 @@ public class MenuBarController extends AbstractActionController {
 	private QuitAction quitAction;
 	@Inject
 	private PrintAction printAction;
+	@Inject
+	private SelectViewAction.NaturalPersonView selectNaturalPersonViewAction;
+	@Inject
+	private SelectViewAction.JuristicPersonView selectJuristicPersonViewAction;
 	
 	@FXML
 	public void onAbout(ActionEvent event) {
@@ -33,4 +38,13 @@ public class MenuBarController extends AbstractActionController {
 		onAction(printAction, event);
 	};
 	
+	@FXML
+	public void onSelectNaturalPersonView(ActionEvent event) {
+		onAction(selectNaturalPersonViewAction, event);
+	}
+	
+	@FXML
+	public void onSelectJuristicPersonView(ActionEvent event) {
+		onAction(selectJuristicPersonViewAction, event);
+	}
 }

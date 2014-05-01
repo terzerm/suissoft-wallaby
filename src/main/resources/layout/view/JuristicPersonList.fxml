@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
+<?import com.suissoft.wallaby.scene.control.cell.TextFieldTableCell?>
+
+<TableView fx:id="listView" SplitPane.resizableWithParent="false" VBox.vgrow="ALWAYS" editable="true" xmlns:fx="http://javafx.com/fxml" xmlns="http://javafx.com/javafx/8">
+	<columns>
+		<TableColumn prefWidth="150.0" text="Name">
+			<cellValueFactory>
+				<PropertyValueFactory property="name" />
+			</cellValueFactory>
+			<cellFactory>
+				<TextFieldTableCell fx:factory="forTableColumn" />
+			</cellFactory>
+		</TableColumn>
+	</columns>
+</TableView>

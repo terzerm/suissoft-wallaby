@@ -29,6 +29,7 @@ public class FxmlModule extends AbstractModule {
 	
 	@Override
 	protected void configure() {
+		bind(FxmlModule.class).toInstance(this);
 		traverseFxmlTree((Type type, Object instance, Named annotation) -> {bind(type, instance, annotation);}, null);
 	}
 	
@@ -46,7 +47,7 @@ public class FxmlModule extends AbstractModule {
 		} else {
 			bind(type).annotatedWith(namedAnnotation).toInstance((T)instance);
 		}
-		System.out.println("bound: " + type);
+		System.out.println("GUICE: bound: " + type + " --> " + instance + (namedAnnotation == null ? "" : " " + namedAnnotation));
 	}
 	public void injectFxmlMembers(Injector injector) {
 		traverseFxmlTree((Type type, Object instance, Named annotation) -> {injector.injectMembers(instance);}, injector);
@@ -72,6 +73,8 @@ public class FxmlModule extends AbstractModule {
 						if (child != null) {
 							//recurse children of child
 							traverseFxmlTree(consumer, context, field.getGenericType(), child, field.getAnnotation(Named.class), visited);
+						} else {
+							System.err.println("GUICE: warning, FXML field is null: " + instance.getClass().getName() + "#" + field.getName());
 						}
 					} catch (IllegalArgumentException | IllegalAccessException e) {
 						throw new RuntimeException("could not access field value " + instance.getClass().getName() + "#" + field.getName() + ", e=" + e, e);

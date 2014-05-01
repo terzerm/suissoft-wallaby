@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+
+<SplitPane fx:id="detailView" dividerPositions="0.5"
+	orientation="VERTICAL" xmlns:fx="http://javafx.com/fxml" xmlns="http://javafx.com/javafx/8">
+	<items>
+		<TabPane id="tabbedEditor" fx:id="tabbedEditors"
+			tabClosingPolicy="UNAVAILABLE">
+			<tabs>
+				<Tab fx:id="hello" text="Hello.java">
+					<content>
+						<TextArea prefWidth="200.0" text="public class Hello {&#10;&#10;}"
+							wrapText="true" />
+					</content>
+				</Tab>
+				<Tab fx:id="untitled" text="Untitled">
+					<content>
+						<TextArea prefWidth="200.0" wrapText="true" />
+					</content>
+				</Tab>
+			</tabs>
+		</TabPane>
+		<TabPane fx:id="tabbedConsoles" tabClosingPolicy="UNAVAILABLE">
+			<tabs>
+				<Tab fx:id="console" text="Console">
+					<content>
+						<TextArea prefWidth="200.0"
+							text="java.lang.NullPointerException&#10;    at Maze.getNumRandOccupants(Maze.java:118)&#10;    at P4TestDriver.testMaze(P4TestDriver.java:995)&#10;    at P4TestDriver.main(P4TestDriver.java:116)"
+							wrapText="true" />
+					</content>
+				</Tab>
+				<Tab fx:id="log" text="Log">
+					<content>
+						<TextArea prefWidth="200.0" wrapText="true" />
+					</content>
+				</Tab>
+			</tabs>
+		</TabPane>
+	</items>
+</SplitPane>
