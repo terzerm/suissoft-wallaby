@@ -2,25 +2,15 @@ package com.suissoft.wallaby.controller;
 
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 
 import javax.inject.Inject;
 
-import com.google.inject.Injector;
 import com.suissoft.model.entity.Entity;
-import com.suissoft.wallaby.inject.guice.FxmlModule;
 import com.suissoft.wallaby.model.ViewSpec;
 
 public class TreeViewController {
-	
-	@Inject
-	private Injector injector;
-	@Inject
-	private TableView<?> listView;
-	@Inject
-	private FxmlModule fxmlModule;
 	
 	@Inject
 	private ViewController viewController;

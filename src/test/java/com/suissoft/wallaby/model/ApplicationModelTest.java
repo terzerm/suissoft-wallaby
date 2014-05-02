@@ -9,7 +9,6 @@ import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableListBase;
 
 import org.junit.Before;
 import org.junit.Test;
