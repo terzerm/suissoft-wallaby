@@ -1,10 +1,14 @@
 package com.suissoft.wallaby.model;
 
+import java.lang.reflect.InvocationTargetException;
+
 import javafx.collections.ObservableList;
 import javafx.scene.control.Control;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
+
+import org.apache.commons.beanutils.PropertyUtils;
 
 public enum ModelBinder {
 	TABLE(TableView.class) {
@@ -28,7 +32,14 @@ public enum ModelBinder {
 		private <E, T> void setEntityValue(E entity, CellEditEvent<E, T> event) {
 			final T oldValue = event.getOldValue();
 			final T newValue = event.getNewValue();
-			System.out.println("setEntityValue: entity=" + entity + ", oldValue=" + oldValue + ", newValue=" + newValue);
+			final String id = event.getTableColumn().getId();
+			System.out.println("property " + id + " set from oldValue=" + oldValue + " to newValue=" + newValue + " in entity " + entity);
+			try {
+				PropertyUtils.setSimpleProperty(entity, id, newValue);
+			} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+				System.err.println("could not set property " + id + " to newValue=" + newValue + " in entity " + entity + ", e=" + e);
+				e.printStackTrace();
+			}
 		}
 	};
 	private final Class<? extends Control> controllClass;
