@@ -11,11 +11,33 @@
 		<ViewSpec fx:id="JuristicPerson" text="Companies" entityClassName="com.suissoft.model.entity.partner.JuristicPerson" listView="/layout/view/JuristicPersonList.fxml" detailView="/layout/view/JuristicPersonDetail.fxml"/>
 		<ViewSpec fx:id="OwnEmployee" text="Employees" entityClassName="com.suissoft.model.entity.partner.NaturalPerson" listView="/layout/view/NaturalPersonList.fxml" detailView="/layout/view/NaturalPersonDetail.fxml"/>
 		<ViewSpec fx:id="OwnCompany" text="Branches/Stores" entityClassName="com.suissoft.model.entity.partner.JuristicPerson" listView="/layout/view/JuristicPersonList.fxml" detailView="/layout/view/JuristicPersonDetail.fxml"/>
-		<ViewSpec fx:id="Workflows" text="Workflows" entityClassName="com.suissoft.model.entity.workflow.Workflow" listView="/layout/view/WorkflowList.fxml" detailView="/layout/view/WorkflowDetail.fxml"/>
-		<ViewSpec fx:id="Partitions" text="Partitions" entityClassName="com.suissoft.model.entity.workflow.Workflow" listView="/layout/view/WorkflowList.fxml" detailView="/layout/view/WorkflowDetail.fxml"/>
+		<ViewSpec fx:id="Workflow" text="Workflows" entityClassName="com.suissoft.model.entity.workflow.Workflow" listView="/layout/view/WorkflowList.fxml" detailView="/layout/view/WorkflowDetail.fxml"/>
+		<ViewSpec fx:id="Partition" text="Partitions" entityClassName="com.suissoft.model.entity.workflow.Workflow" listView="/layout/view/WorkflowList.fxml" detailView="/layout/view/WorkflowDetail.fxml"/>
+		<ViewSpec fx:id="ToDoItem" text="ToDo's" entityClassName="com.suissoft.model.entity.workflow.Workflow" listView="/layout/view/WorkflowList.fxml" detailView="/layout/view/WorkflowDetail.fxml"/>
+		<ViewSpec fx:id="CompleteItem" text="Completed" entityClassName="com.suissoft.model.entity.workflow.Workflow" listView="/layout/view/WorkflowList.fxml" detailView="/layout/view/WorkflowDetail.fxml"/>
+		<ViewSpec fx:id="ClosedItem" text="Closed" entityClassName="com.suissoft.model.entity.workflow.Workflow" listView="/layout/view/WorkflowList.fxml" detailView="/layout/view/WorkflowDetail.fxml"/>
 	</fx:define>
 	<TreeItem value="Root">
 		<children>
+			<TreeItem value="Worklist">
+				<children>
+					<TreeItem>
+						<value>
+							<fx:reference source="ToDoItem"/>
+						</value>
+					</TreeItem>
+					<TreeItem>
+						<value>
+							<fx:reference source="CompleteItem"/>
+						</value>
+					</TreeItem>
+					<TreeItem>
+						<value>
+							<fx:reference source="ClosedItem"/>
+						</value>
+					</TreeItem>
+				</children>
+			</TreeItem>
 			<TreeItem value="Contacts">
 				<children>
 					<TreeItem>
@@ -35,16 +57,16 @@
 					</TreeItem>
 				</children>
 			</TreeItem>
-			<TreeItem value="Workflows">
+			<TreeItem value="Workflow Admin">
 				<children>
 					<TreeItem>
 						<value>
-							<fx:reference source="Workflows"/>
+							<fx:reference source="Workflow"/>
 						</value>
 					</TreeItem>
 					<TreeItem>
 						<value>
-							<fx:reference source="Partitions"/>
+							<fx:reference source="Partition"/>
 						</value>
 					</TreeItem>
 				</children>

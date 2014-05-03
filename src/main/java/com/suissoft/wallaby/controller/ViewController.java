@@ -7,7 +7,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Control;
-import javafx.scene.control.TableView;
 import javafx.scene.layout.Pane;
 
 import javax.inject.Inject;
@@ -46,7 +45,7 @@ public class ViewController {
 	}
 	
 	public <E extends Entity> void replaceView(ViewSpec viewSpec) {
-		TableView<?> viewControl = null;
+		Control viewControl = null;
 		try {
 			if (listViewPane != null) {
 				final FXMLLoader loader = new FXMLLoader(WallabyApplication.class.getResource(viewSpec.getListView()));

@@ -1,6 +1,5 @@
 package com.suissoft.wallaby.controller;
 
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
@@ -20,9 +19,9 @@ public class TreeViewController {
 
 	@FXML
 	protected void initialize() {
-		treeView.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends TreeItem<?>> observable, TreeItem<?> oldValue, TreeItem<?> newValue) -> {selectionChanged(oldValue, newValue);});
+		treeView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {selectionChanged(oldValue, newValue);});
 	}
-
+	
 	private void selectionChanged(TreeItem<?> oldValue, TreeItem<?> newValue) {
 		System.out.println("OLD: " + oldValue + ", NEW: " + newValue);
 		if (newValue != null && newValue.getValue() instanceof ViewSpec) {
