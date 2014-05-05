@@ -7,7 +7,7 @@
 
 <TableView fx:id="listView" SplitPane.resizableWithParent="false" VBox.vgrow="ALWAYS" editable="true" xmlns:fx="http://javafx.com/fxml" xmlns="http://javafx.com/javafx/8">
 	<columns>
-		<TableColumn prefWidth="150.0" text="Name">
+		<TableColumn prefWidth="150.0" text="Name" id="name">
 			<cellValueFactory>
 				<PropertyValueFactory property="name" />
 			</cellValueFactory>

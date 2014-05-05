@@ -15,7 +15,7 @@
 				<TextFieldTableCell fx:factory="forTableColumn" />
 			</cellFactory>
 		</TableColumn>
-		<TableColumn prefWidth="150.0" text="Last name">
+		<TableColumn prefWidth="150.0" text="Last name" id="lastName">
 			<cellValueFactory>
 				<PropertyValueFactory property="lastName" />
 			</cellValueFactory>
@@ -23,7 +23,7 @@
 				<TextFieldTableCell fx:factory="forTableColumn" />
 			</cellFactory>
 		</TableColumn>
-		<TableColumn prefWidth="100" text="Birthday">
+		<TableColumn prefWidth="100" text="Birthday" id="birthday">
 			<cellValueFactory>
 				<PropertyValueFactory property="birthday" />
 			</cellValueFactory>

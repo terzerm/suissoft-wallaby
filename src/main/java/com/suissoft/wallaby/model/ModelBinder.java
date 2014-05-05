@@ -1,11 +1,10 @@
 package com.suissoft.wallaby.model;
 
-import java.lang.reflect.InvocationTargetException;
-
 import javafx.collections.ObservableList;
 import javafx.scene.control.Control;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellEditEvent;
+import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 
 import org.apache.commons.beanutils.PropertyUtils;
@@ -18,14 +17,33 @@ public enum ModelBinder {
 		public <E> void castAndBind(Control control, ObservableList<E> data) {
 			final TableView<E> tableView = (TableView<E>) control;
 			tableView.setItems(data);
+			tableView.editingCellProperty().addListener((observer, oldValue, newValue) -> {editingCellChanged(tableView, oldValue, newValue);});
 			for (TableColumn<E, ?> tableColumn : tableView.getColumns()) {
 				setOnEditCommit(tableColumn);
 			}
 		}
 
+		private <E> void editingCellChanged(TableView<E> tableView, TablePosition<E,?> oldEditingPos, TablePosition<E,?> newEditingPos) {
+			System.out.println("editingCellChanged: oldEditingPos=" + oldEditingPos + ", newEditingPos=" + newEditingPos);
+			if (oldEditingPos != null && newEditingPos == null) {
+				tableView.setUserData(oldEditingPos);
+			}
+		}
 		private <E, T> void setOnEditCommit(TableColumn<E, T> tableColumn) {
 			tableColumn.setOnEditCommit((CellEditEvent<E, T> event) -> {
-				setEntityValue(event.getTableView().getItems().get(event.getTablePosition().getRow()), event);
+				if (event.getTablePosition() != null && event.getTableColumn() == tableColumn) {
+					final TableView<E> tableView = tableColumn.getTableView();
+					final int row = event.getTablePosition().getRow();
+					setEntityValue(tableView.getItems().get(row), event);
+				}
+			});
+			tableColumn.setOnEditCancel((CellEditEvent<E, T> event) -> {
+				if (event != null) {
+					final T oldValue = event.getTablePosition() == null ? null : event.getOldValue();
+					System.out.println("edit cancelled: oldValue=" + oldValue + ", newValue=" + event.getNewValue() + ", event=" + event);
+				} else {
+					System.out.println("edit cancelled: event=" + event);
+				}
 			});
 		}
 
@@ -33,10 +51,10 @@ public enum ModelBinder {
 			final T oldValue = event.getOldValue();
 			final T newValue = event.getNewValue();
 			final String id = event.getTableColumn().getId();
-			System.out.println("property " + id + " set from oldValue=" + oldValue + " to newValue=" + newValue + " in entity " + entity);
 			try {
 				PropertyUtils.setSimpleProperty(entity, id, newValue);
-			} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+				System.out.println("property " + id + " set from oldValue=" + oldValue + " to newValue=" + newValue + " in entity " + entity);
+			} catch (Exception e) {
 				System.err.println("could not set property " + id + " to newValue=" + newValue + " in entity " + entity + ", e=" + e);
 				e.printStackTrace();
 			}
