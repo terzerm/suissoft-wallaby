@@ -12,7 +12,16 @@
 	<menus>
 		<Menu mnemonicParsing="true" text="Wallaby">
 			<items>
-				<MenuItem mnemonicParsing="false" text="About Wallabby" onAction="#onAbout" />
+				<MenuItem mnemonicParsing="false" text="About Wallabby" onAction="#onAbout">
+					<graphic>
+						<ImageView fitHeight="26.0" fitWidth="26.0"
+							mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+							<image>
+								<Image url="/image/suissoft_wallaby_active.png" backgroundLoading="true" />
+							</image>
+						</ImageView>
+					</graphic>
+				</MenuItem>
 			</items>
 			<items>
 				<SeparatorMenuItem />
