@@ -12,12 +12,12 @@
 	<menus>
 		<Menu mnemonicParsing="true" text="Wallaby">
 			<items>
-				<MenuItem mnemonicParsing="false" text="About Wallabby" onAction="#onAbout">
+				<MenuItem mnemonicParsing="false" text="About Wallaby" onAction="#onAbout">
 					<graphic>
-						<ImageView fitHeight="26.0" fitWidth="26.0"
+						<ImageView fitHeight="0.0" fitWidth="0.0"
 							mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
 							<image>
-								<Image url="/image/suissoft_wallaby_active.png" backgroundLoading="true" />
+								<Image url="/image/suissoft_wallaby_menu.png" backgroundLoading="true" />
 							</image>
 						</ImageView>
 					</graphic>
@@ -27,7 +27,16 @@
 				<SeparatorMenuItem />
 			</items>
 			<items>
-				<MenuItem mnemonicParsing="false" text="Quit Wallaby" onAction="#onQuit" />
+				<MenuItem mnemonicParsing="false" text="Quit Wallaby" onAction="#onQuit">
+					<graphic>
+						<ImageView fitHeight="0.0" fitWidth="0.0"
+							mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+							<image>
+								<Image url="/image/suissoft_quit_menu.png" backgroundLoading="true" />
+							</image>
+						</ImageView>
+					</graphic>
+				</MenuItem>
 			</items>
 		</Menu>
 		<Menu mnemonicParsing="true" text="File">
