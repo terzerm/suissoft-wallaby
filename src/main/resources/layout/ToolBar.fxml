@@ -11,58 +11,20 @@
 	fx:controller="com.suissoft.wallaby.controller.ToolBarController"
 	xmlns:fx="http://javafx.com/fxml" xmlns="http://javafx.com/javafx/8">
 	<items>
-		<Button fx:id="save" mnemonicParsing="false" text="" onAction="#onPrint" style="-fx-padding:0; -fx-background-color:transparent" >
+		<Button id="save" mnemonicParsing="false" text="">
 			<tooltip>
 				<Tooltip text="Save" />
 			</tooltip>
-			<graphic>
-				<ImageView fitHeight="0.0" fitWidth="0.0"
-					mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
-					<image>
-						<Image url="/image/suissoft_save_active.png" />
-					</image>
-				</ImageView>
-			</graphic>
 		</Button>
-		<Button fx:id="save2" mnemonicParsing="false" text="" style="-fx-padding:0; -fx-background-color: transparent">
-			<tooltip>
-				<Tooltip text="Save" />
-			</tooltip>
-			<graphic>
-				<ImageView fitHeight="0.0" fitWidth="0.0"
-					mouseTransparent="true" pickOnBounds="false" preserveRatio="true">
-					<image>
-						<Image url="/image/suissoft_save_inactive.png" />
-					</image>
-				</ImageView>
-			</graphic>
-		</Button>
-		<Button fx:id="profile" mnemonicParsing="false" text="" style="-fx-padding:0; -fx-background-color: transparent">
+		<Button id="approve" mnemonicParsing="false" text="">
 			<tooltip>
 				<Tooltip text="Approve"/>
 			</tooltip>
-			<graphic>
-				<ImageView fitHeight="0.0" fitWidth="0.0"
-					mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
-					<image>
-						<Image url="/image/suissoft_approve_active.png" />
-					</image>
-				</ImageView>
-			</graphic>
 		</Button>
-		<Button fx:id="print" mnemonicParsing="false" onAction="#onPrint" text="" style="-fx-padding:0; -fx-background-color: transparent">
+		<Button id="print" mnemonicParsing="false" text="">
 			<tooltip>
 				<Tooltip text="Print" />
 			</tooltip>
-			<graphic>
-				<ImageView fitHeight="0.0" fitWidth="0.0"
-					mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
-					<image>
-						<Image url="/image/suissoft_print_active.png"
-							backgroundLoading="true" />
-					</image>
-				</ImageView>
-			</graphic>
 		</Button>
 	</items>
 </ToolBar>

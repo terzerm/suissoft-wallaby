@@ -45,7 +45,6 @@ public class ApplicationModel {
 	}
 	
 	@PostConstruct
-	@Inject //workaround since guice does not support @PostConstruct yet
 	private void loadDefaultData() {
 		loadNaturalPersonData();
 		loadJuristicPersonData();

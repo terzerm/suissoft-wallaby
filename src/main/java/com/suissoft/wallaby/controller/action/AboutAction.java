@@ -2,11 +2,15 @@ package com.suissoft.wallaby.controller.action;
 
 import javafx.event.ActionEvent;
 
+import javax.inject.Named;
 import javax.inject.Singleton;
 
 @Singleton
+@Named(AboutAction.NAME)
 public class AboutAction extends AbstractDialogAction {
 	
+	public static final String NAME = "about";
+
 	public AboutAction() {
 		super("About Wallaby");
 	}

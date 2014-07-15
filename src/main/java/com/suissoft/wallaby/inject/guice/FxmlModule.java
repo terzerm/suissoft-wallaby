@@ -51,6 +51,7 @@ public class FxmlModule extends AbstractModule {
 	}
 	public void injectFxmlMembers(Injector injector) {
 		traverseFxmlTree((Type type, Object instance, Named annotation) -> {injector.injectMembers(instance);}, injector);
+		PostConstructInvoker.invokePostConstructMethods(injector);
 	}
 
 	private <C> void traverseFxmlTree(TriConsumer consumer, C context) {
