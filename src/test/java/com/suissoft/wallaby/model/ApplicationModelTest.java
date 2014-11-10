@@ -18,6 +18,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
+import com.google.inject.Injector;
 import com.google.inject.TypeLiteral;
 import com.suissoft.model.dao.Dao;
 import com.suissoft.model.dao.partner.JuristicPersonDao;
@@ -25,6 +26,7 @@ import com.suissoft.model.dao.partner.NaturalPersonDao;
 import com.suissoft.model.entity.partner.JuristicPerson;
 import com.suissoft.model.entity.partner.NaturalPerson;
 import com.suissoft.model.entity.workflow.Workflow;
+import com.suissoft.wallaby.inject.guice.FxmlModule;
 
 /**
  * Unit test for {@link ApplicationModel}
@@ -53,7 +55,11 @@ public class ApplicationModelTest {
 	
 	@Before
 	public void beforeEach() {
-		applicationModel = Guice.createInjector(new Module()).getInstance(ApplicationModel.class);
+		final FxmlModule fxmlModule = new FxmlModule(this);
+		final Injector injector = Guice.createInjector(fxmlModule, new Module());
+		applicationModel = injector.getInstance(ApplicationModel.class);
+		fxmlModule.injectFxmlMembers(injector);
+		
 	}
 	@Test
 	public void shouldLoadDefaultData() {

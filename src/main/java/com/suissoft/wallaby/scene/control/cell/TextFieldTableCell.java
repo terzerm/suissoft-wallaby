@@ -221,6 +221,7 @@ public class TextFieldTableCell<S, T> extends
 					} else if (event.getCode() == KeyCode.TAB) {
 						final TablePosition<S, ?> pos = getTableView().getEditingCell();
 						Platform.runLater(new Runnable() {
+							@Override
 							public void run() {
 								editNextColumn(event.isShiftDown(), pos);
 							}
