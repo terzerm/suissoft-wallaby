@@ -1,23 +1,18 @@
 package com.suissoft.wallaby.controller.action;
 
-import javafx.stage.Window;
-
-import javax.inject.Inject;
-
-import org.controlsfx.dialog.Dialogs;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 abstract public class AbstractDialogAction extends WallabyAction {
-
-	@Inject
-	private Window window;
 
 	public AbstractDialogAction(String text) {
 		super(text);
 	}
 
-	protected Dialogs createDialog(String title, String message) {
-		return Dialogs.create().lightweight().owner(window).masthead(null)//
-			.title(title)//
-			.message(message);
+	protected void showDialog(AlertType alertType, String title, String message) {
+		final Alert alert = new Alert(alertType);
+		alert.setTitle(title);
+		alert.setContentText(message);
+		alert.showAndWait();
 	}
 }
