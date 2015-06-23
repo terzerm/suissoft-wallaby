@@ -79,7 +79,7 @@ public class ToolBarController extends AbstractActionController {
 	private void bindOnActionProperty(Button button) {
 		final WallabyAction action = actionManager.getActionFor(button);
 		if (action != null) {
-			button.onActionProperty().setValue(e -> action.execute(e));
+			button.onActionProperty().setValue(e -> action.handle(e));
 			System.out.println("bound action for button: " + button.getId());
 		} else {
 			System.err.println("action for button " + button.getId() + " not found");

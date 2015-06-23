@@ -16,7 +16,7 @@ public class QuitAction extends WallabyAction {
 		super("Quit Wallaby");
 	}
 	@Override
-	public void execute(ActionEvent ae) {
+	public void handle(ActionEvent ae) {
 		Platform.exit();
 		//FIXME above does not work, hence the hard stop below
 		System.exit(0);

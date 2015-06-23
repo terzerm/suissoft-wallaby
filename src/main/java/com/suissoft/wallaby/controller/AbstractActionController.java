@@ -8,7 +8,7 @@ abstract public class AbstractActionController {
 	
 	protected void onAction(Action action, ActionEvent event) {
 		if (!action.disabledProperty().get()) {
-			action.execute(event);
+			action.handle(event);
 		} else {
 			System.err.println("Action is disabled: action=" + action + ", event=" + event);
 		}

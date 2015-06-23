@@ -22,7 +22,7 @@ public class PrintAction extends WallabyAction {
 		super("Print");
 	}
 	@Override
-	public void execute(ActionEvent ae) {
+	public void handle(ActionEvent ae) {
 		final PrinterJob printerJob = PrinterJob.createPrinterJob();
 		if (printerJob.showPrintDialog(null)) {
 			if (printerJob.printPage(application.getRootNode())) {

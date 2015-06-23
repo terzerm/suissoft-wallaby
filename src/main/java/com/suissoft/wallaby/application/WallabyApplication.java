@@ -47,8 +47,8 @@ public class WallabyApplication extends Application {
 	}
 	
 	private void initializeWindow() {
-		stage.onHiddenProperty().set(evt -> {quitAction.execute(null);});
-		stage.onShowingProperty().set(evt -> {viewAction.execute(null);});
+		stage.onHiddenProperty().set(evt -> {quitAction.handle(null);});
+		stage.onShowingProperty().set(evt -> {viewAction.handle(null);});
 	}
 	
 	private void injectDependencies(Object controller) {

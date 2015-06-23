@@ -15,7 +15,7 @@ public class AboutAction extends AbstractDialogAction {
 		super("About Wallaby");
 	}
 	@Override
-	public void execute(ActionEvent ae) {
+	public void handle(ActionEvent ae) {
 		createDialog("About Wallaby", "Wallaby is the most awesome application. Believe it.\n\nIf you don't believe it you better quit the application now immediately.")//
 			.showInformation();
 	}

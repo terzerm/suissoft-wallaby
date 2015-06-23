@@ -31,7 +31,7 @@ public class SelectViewAction extends WallabyAction {
 		this.entityClass = entityClass;
 	}
 	@Override
-	public void execute(ActionEvent ae) {
+	public void handle(ActionEvent ae) {
 		treeViewController.select(entityClass);
 	}
 }
